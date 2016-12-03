@@ -2,6 +2,15 @@
   "name": "angular2-github-ui",
   "version": "0.0.0",
   "license": "MIT",
+  "author": "aksakalli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aksakalli/angular2-github-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aksakalli/angular2-github-ui/issues"
+  },
+  "homepage": "https://github.com/aksakalli/angular2-github-ui",
   "angular-cli": {},
   "scripts": {
     "start": "ng serve",
@@ -10,7 +19,6 @@
     "pree2e": "webdriver-manager update",
     "e2e": "protractor"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "2.2.1",
     "@angular/compiler": "2.2.1",
