@@ -116,7 +116,7 @@ export class GithubApiService {
         }
 
         return this.http
-            .get(`${this.apiURL}/sssearch/repositories?q=${q}`)
+            .get(`${this.apiURL}/search/repositories?q=${q}`)
             .toPromise()
             .then(response => response.json().items as Repo[])
             .catch(this.handleError);
