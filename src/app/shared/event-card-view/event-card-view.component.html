@@ -1,0 +1,59 @@
+<div *ngIf="event.type=='WatchEvent'">
+  <i class="fa fa-star fa-fw text-muted" aria-hidden="true"></i>
+  <a [routerLink]="['/user', event.actor.login]">{{event.actor.login}} </a> starred
+  <a [routerLink]="'/repo/' + event.repo.name">{{event.repo.name}}</a>
+  <small class="text-muted">{{ event.created_at | fromNow }}</small>
+  <hr>
+</div>
+
+<div *ngIf="event.type=='PushEvent' && event.payload.ref=='refs/heads/master'">
+  <i class="fa fa-circle-o fa-fw text-muted" aria-hidden="true"></i>
+  <a [routerLink]="['/user', event.actor.login]">{{event.actor.login}} </a> pushed to
+  <a [routerLink]="'/repo/' + event.repo.name">{{event.repo.name}}</a>
+  <small class="text-muted">{{ event.created_at | fromNow }}</small>
+  <hr>
+</div>
+
+<div *ngIf="event.type=='CreateEvent' && event.payload.ref_type=='repository'">
+  <i class="fa fa-book fa-fw text-muted" aria-hidden="true"></i>
+  <a [routerLink]="['/user', event.actor.login]">{{event.actor.login}} </a> created repository
+  <a [routerLink]="'/repo/' + event.repo.name">{{event.repo.name}}</a>
+  <small class="text-muted">{{ event.created_at | fromNow }}</small>
+  <hr>
+</div>
+
+<div *ngIf="event.type=='ForkEvent'">
+  <i class="fa fa-code-fork fa-fw text-muted" aria-hidden="true"></i>
+  <a [routerLink]="['/user', event.actor.login]">{{event.actor.login}} </a> forked
+  <a [routerLink]="['/repo', event.repo.name]">{{event.repo.name}} </a> to
+  <a [routerLink]="'/repo/' + event.repo.name">{{event.repo.name}}</a>
+  <small class="text-muted">{{ event.created_at | fromNow }}</small>
+  <hr>
+</div>
+
+<div *ngIf="event.type=='IssueCommentEvent'">
+  <i class="fa fa-comment fa-fw text-muted" aria-hidden="true"></i>
+  <a [routerLink]="['/user', event.actor.login]">{{event.actor.login}} </a> commented issue
+  <a [href]="event.payload.comment.html_url">#{{event.payload.issue.number}} </a> for
+  <a [routerLink]="'/repo/' + event.repo.name">{{event.repo.name}}</a>
+  <small class="text-muted">{{ event.created_at | fromNow }}</small>
+  <hr>
+</div>
+
+<div *ngIf="event.type=='IssuesEvent'">
+  <i class="fa fa-exclamation-circle fa-fw text-muted" aria-hidden="true"></i>
+  <a [routerLink]="['/user', event.actor.login]">{{event.actor.login}} </a> {{event.payload.action}} issue
+  <a [href]="event.payload.issue.html_url">#{{event.payload.issue.number}} </a> for
+  <a [routerLink]="'/repo/' + event.repo.name">{{event.repo.name}}</a>
+  <small class="text-muted">{{ event.created_at | fromNow }}</small>
+  <hr>
+</div>
+
+<div *ngIf="event.type=='PullRequestEvent'">
+  <i class="fa fa-arrows-h fa-fw text-muted" aria-hidden="true"></i>
+  <a [routerLink]="['/user', event.actor.login]">{{event.actor.login}} </a> {{event.payload.action}} pull request
+  <a [href]="event.payload.pull_request.html_url">#{{event.payload.pull_request.number}} </a> for
+  <a [routerLink]="'/repo/' + event.repo.name">{{event.repo.name}}</a>
+  <small class="text-muted">{{ event.created_at | fromNow }}</small>
+  <hr>
+</div>

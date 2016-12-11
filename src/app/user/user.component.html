@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-3" *ngIf="user">
+        <img [src]="user.avatar_url" alt class="img-fluid rounded">
+        <h2> {{user.name}}</h2>
+        <label class="text-muted"> {{user.login}}</label>
+        <p> {{user.bio}} </p>
+        <hr/>
+        <ul class="list-unstyled">
+            <li *ngIf="user.company" class="text-truncate">
+                <i class="fa fa-users fa-fw text-muted" aria-hidden="true"></i> {{user.company}}
+            </li>
+            <li *ngIf="user.location" class="text-truncate">
+                <i class="fa fa-map-marker fa-fw text-muted" aria-hidden="true"></i> {{user.location}}
+            </li>
+            <li *ngIf="user.blog" class="text-truncate">
+                <i class="fa fa-link fa-fw text-muted" aria-hidden="true"></i> <a [href]="user.blog">{{user.blog}}</a>
+            </li>
+            <li *ngIf="user.email" class="text-truncate">
+                <i class="fa fa-envelope fa-fw text-muted" aria-hidden="true"></i> <a [href]="user.email">{{user.email}}</a>
+            </li>
+            <li *ngIf="user.created_at" class="text-truncate">
+                <i class="fa fa-clock-o fa-fw text-muted" aria-hidden="true"></i> Joined on {{user.created_at | date: 'MMM
+                d, yyyy'}}
+            </li>
+
+        </ul>
+    </div>
+    <div class="col-md-9">
+        <ul class="nav nav-tabs" *ngIf="user">
+            <li class="nav-item">
+                <a routerLink="." routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Events</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="recieved-events" routerLinkActive="active" class="nav-link">Recieved Events</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="repos" routerLinkActive="active" class="nav-link">Repositories
+                    <span class="tag tag-pill tag-default">{{user.public_repos | largeNumberShorten}}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="followers" routerLinkActive="active" class="nav-link" href="#">Followers
+                    <span class="tag tag-pill tag-default">{{user.followers | largeNumberShorten}}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="following" routerLinkActive="active" class="nav-link" href="#">Following
+                    <span class="tag tag-pill tag-default">{{user.following | largeNumberShorten}}</span>
+                </a>
+            </li>
+        </ul>
+        <router-outlet></router-outlet>
+    </div>
+</div>

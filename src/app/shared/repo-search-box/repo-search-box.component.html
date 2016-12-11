@@ -1,0 +1,4 @@
+<form class="form-inline float-xs-left">
+    <input name="search" placeholder="Search repos" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"
+        (selectItem)="navigateToRepo($event)" />
+</form>

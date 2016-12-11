@@ -1,0 +1,45 @@
+<div *ngIf="repo">
+  <h4>
+    <i class="fa fa-book fa-fw text-muted" aria-hidden="true"></i>
+    <a [routerLink]="['/user', repo.owner.login]">
+      {{repo.owner.login}}
+    </a> &#47;
+    <a [routerLink]="['/repo', repo.owner.login, repo.name]">
+      {{repo.name}}
+    </a>
+    <small class="text-muted pull-right">
+      <ul class="list-inline text-muted">
+        <li class="list-inline-item">
+          <i class="fa fa-star fa-fw" aria-hidden="true"></i> {{repo.stargazers_count | largeNumberShorten}}
+        </li>
+        <li class="list-inline-item">
+          <i class="fa fa-code-fork fa-fw" aria-hidden="true"></i> {{repo.forks_count | largeNumberShorten}}
+        </li>
+      </ul>
+    </small>
+  </h4>
+  <p>
+    {{repo.description}}
+    <a [href]="repo.homepage">
+      {{repo.homepage}}
+    </a>
+    <small>Updated {{repo.updated_at | fromNow}}</small>
+  </p>
+  <pre>
+    <code>git clone {{repo.git_url}}</code>
+  </pre>
+</div>
+
+<ul class="nav nav-pills mb-2">
+  <li class="nav-item">
+    <a routerLink="." routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
+      <i class="fa fa-file-text-o" aria-hidden="true"></i> Readme
+    </a>
+  </li>
+  <li class="nav-item">
+    <a routerLink="events" routerLinkActive="active" class="nav-link">
+      <i class="fa fa-list-alt" aria-hidden="true"></i> Events
+    </a>
+  </li>
+</ul>
+<router-outlet></router-outlet>

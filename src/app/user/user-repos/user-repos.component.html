@@ -1,0 +1,38 @@
+<div *ngIf="repos">
+  <ul class="mt-2 list-unstyled">
+    <li *ngFor="let repo of repos">
+      <h3>
+        <a [routerLink]="['/repo', repo.owner.login, repo.name]">
+          {{repo.name}}
+        </a>
+      </h3>
+      <p>
+        {{repo.description}}
+      </p>
+      <ul class="list-inline text-muted">
+        <li *ngIf="repo.language" class="list-inline-item">
+          {{repo.language}}
+        </li>
+        <li *ngIf="repo.stargazers_count" class="list-inline-item">
+          <i class="fa fa-star fa-fw" aria-hidden="true"></i> {{repo.stargazers_count | largeNumberShorten}}
+        </li>
+        <li *ngIf="repo.forks_count" class="list-inline-item">
+          <i class="fa fa-code-fork fa-fw" aria-hidden="true"></i> {{repo.forks_count | largeNumberShorten}}
+        </li>
+        <li class="list-inline-item">
+          Updated on {{repo.updated_at | date: 'MMM d, yyyy'}}
+        </li>
+      </ul>
+      <hr>
+    </li>
+  </ul>
+  <p *ngIf="repos.length==0">
+    No Repositories to list!
+  </p>
+  <nav aria-label="Page navigation" class="text-xs-center mt-2 mb-2">
+    <div class="btn-group" data-toggle="buttons">
+      <button [disabled]="page<2" [routerLink]="['.']" [queryParams]="{page: page - 1}" type="button" class="btn page-link">Previous</button>
+      <button [disabled]="perPage!=repos.length" [routerLink]="['.']" [queryParams]="{page: page + 1}" type="button" class="btn page-link">Next</button>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,15 @@
+<div *ngIf="events">
+  <ul class="mt-2 list-unstyled">
+    <li *ngFor="let event of events">
+      <app-event-card-view [event]="event"></app-event-card-view>
+    </li>
+  </ul>
+  <p *ngIf="events.length==0">
+    No events to list!
+  </p>
+  <nav aria-label="Page navigation" class="text-xs-center mt-2 mb-2">
+    <div class="btn-group" data-toggle="buttons">
+      <button [disabled]="loadButtonDisabled" (click)="loadMore()" type="button" class="btn page-link">Load more</button>
+    </div>
+  </nav>
+</div>

@@ -1,3 +1,15 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="navbar navbar-light bg-faded navbar-static-top mb-1">
+  <div class="container">
+    <a routerLink="/" class="navbar-brand">
+      <i class="fa fa-github" aria-hidden="true"></i> Explorer
+    </a>
+    <app-repo-search-box></app-repo-search-box>
+    <a class="navbar-brand float-xs-right text-muted" href="https://github.com/aksakalli/angular2-github-ui">
+      powered by
+      <img src="/assets/img/angular.svg" height="30" alt="angular.io">
+    </a>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

@@ -1,16 +1,16 @@
-# Angular2GithubUi
+# Angular2 Github UI
+
+Github Explorer UI using Angular2.
+
+[Check Demo](https://aksakalli.github.io/angular2-github-ui/)
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-```terminal
-# to debug with VS Code and Chrome
-# kill all chome processes
-# start with remote debugging
-google-chrome -remote-debugging-port=9222
-```
+To debug on Chrome, kill all processes and 
+run it with debug flag `google-chrome -remote-debugging-port=9222`.
 
 ## Code scaffolding
 
@@ -36,3 +36,7 @@ Run `ng github-pages:deploy` to deploy to Github Pages.
 ## Further help
 
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## License
+
+Released under [the MIT license](LICENSE).

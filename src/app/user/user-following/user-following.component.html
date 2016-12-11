@@ -1,0 +1,16 @@
+<div *ngIf="following">
+  <div class="mt-2 row">
+    <div class="col-md-4 col-sm-6" *ngFor="let user of following">
+      <app-user-card-view [user]="user"></app-user-card-view>
+    </div>
+  </div>
+  <p *ngIf="following.length==0">
+    No Users to list!
+  </p>
+  <nav aria-label="Page navigation" class="text-xs-center mt-2 mb-2">
+    <div class="btn-group" data-toggle="buttons">
+      <button [disabled]="page<2" [routerLink]="['.']" [queryParams]="{page: page - 1}" type="button" class="btn page-link">Previous</button>
+      <button [disabled]="perPage!=following.length" [routerLink]="['.']" [queryParams]="{page: page + 1}" type="button" class="btn page-link">Next</button>
+    </div>
+  </nav>
+</div>
