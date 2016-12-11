@@ -102,7 +102,7 @@ export class GithubApiService {
     }
 
     getPopularRepos(from: Date): Promise<Repo[]> {
-        let formattedDate = moment(from).format('YYYY-MM-DD');
+        let formattedDate = moment(from).utc().format('YYYY-MM-DD');
         return this.http
             .get(`${this.apiURL}/search/repositories?q=created:>${formattedDate}&sort=stars`)
             .toPromise()
